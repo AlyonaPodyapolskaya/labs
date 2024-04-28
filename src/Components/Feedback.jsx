@@ -14,10 +14,9 @@ const Feedback = ({ open, handleClose }) => {
   };
 
   const handleSubmit = () => {
-    // Здесь можно добавить логику для отправки обратной связи
     console.log('Отзыв:', feedback);
     console.log('Email:', email);
-    handleClose(); // Закрыть всплывающее окно после отправки
+    handleClose();
   };
 
   return (
