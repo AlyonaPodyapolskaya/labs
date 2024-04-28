@@ -12,6 +12,7 @@ import Lab4 from './Pages/Lab4';
 import CounterPage from './Pages/CounterPage';
 import Home from './Pages/Home';
 import Registration from './Pages/Registration';
+import UserManage from './REST/UserManage';
 
 const ThemeContext = createContext();
 
@@ -39,6 +40,9 @@ const Header = () => {
         </Button>
         <Button color="inherit" variant="outlined" component={Link} to="/reg" sx={{ margin: '10px' }}>
           Регистрация
+        </Button>
+        <Button color="inherit" variant="outlined" component={Link} to="/manage" sx={{ margin: '10px' }}>
+          Rest
         </Button>
         <Button color="inherit" onClick={toggleTheme} variant="outlined" sx={{ margin: '10px' }}>
           Сменить тему
@@ -96,6 +100,7 @@ const App = () => {
               <Route path="/lab3" element={<Lab3 />} />
               <Route path="/lab4" element={<Lab4 />} />
               <Route path="/reg" element={<Registration/>}/>
+              <Route path="/manage" element={<UserManage/>}/>
               <Route path="/counter" element={<CounterPage />} />
             </Routes>
           </Layout>

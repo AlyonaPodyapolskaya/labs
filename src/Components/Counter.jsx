@@ -1,39 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Typography } from '@mui/material';
-import { createSlice, configureStore } from '@reduxjs/toolkit';
-
-const counterSlice = createSlice({
-  name: 'counter',
-  initialState: {
-    value: 0,
-  },
-  reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    reset: (state) => {
-      state.value = 0;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
-    decrementByAmount: (state, action) => {
-      state.value -= action.payload;
-    },
-  },
-});
-
-const store = configureStore({
-  reducer: {
-    counter: counterSlice.reducer,
-  },
-});
-
-const { increment, decrement, reset, incrementByAmount, decrementByAmount } = counterSlice.actions;
+import store from '../redux/store';
+import { increment, decrement, reset, incrementByAmount, decrementByAmount } from '../redux/actions';
 
 const Counter = () => {
   const dispatch = useDispatch();
@@ -63,4 +32,4 @@ const Counter = () => {
   );
 };
 
-export { store, Counter, increment, decrement, reset, incrementByAmount, decrementByAmount };
+export { store, Counter };
