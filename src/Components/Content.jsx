@@ -3,9 +3,25 @@ import { Paper } from '@mui/material';
 
 const Content = ({ children }) => {
     return (
-      <Paper sx={{ backgroundColor: 'white', flexGrow: 1, marginTop: '30px', marginBottom: '30px', borderRadius: '20px', padding: '30px', marginLeft: '20px', marginRight: '20px', boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.25)', color: '#000' }}>
-        {children}
-      </Paper>
+      <div style={{
+        display: 'grid',
+        gridTemplateRows: 'auto 1fr auto', 
+        minHeight: '100vh',
+        paddingTop: '64px', 
+        padding: '20px',
+      }}>
+        <Paper sx={{
+          backgroundColor: 'white',
+          borderRadius: '20px',
+          padding: '30px',
+          boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.25)',
+          color: '#000',
+          overflow: 'auto',
+          marginTop: '10vh', 
+        }}>
+          {children}
+        </Paper>
+      </div>
     );
   };
 

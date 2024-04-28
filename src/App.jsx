@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { AppBar, Toolbar, Drawer, List, Button, createTheme, ThemeProvider } from '@mui/material';
-import { Provider} from 'react-redux';
+import { AppBar, Toolbar, Drawer, List, Button, createTheme, ThemeProvider, IconButton } from '@mui/material';
+import { Provider } from 'react-redux';
 import { store } from './Components/Counter';
 import NavigationLink from './Components/NavigationLink';
 import Layout from './Components/Layout';
@@ -13,9 +13,10 @@ import CounterPage from './Pages/CounterPage';
 import Home from './Pages/Home';
 import Registration from './Pages/Registration';
 import UserManage from './REST/UserManage';
+import MenuIcon from '@mui/icons-material/Menu'; 
+import About from './Pages/About';
 
 const ThemeContext = createContext();
-
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -27,14 +28,17 @@ const Header = () => {
   const { toggleTheme } = useContext(ThemeContext);
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
-        <Button color="inherit" variant="outlined" onClick={toggleDrawer} sx={{ marginRight: '10px' }}>
-          Открыть меню
+        <IconButton color="inherit" onClick={toggleDrawer} sx={{ marginRight: '10px' }}>
+          <MenuIcon />
+        </IconButton>
+        <Button color="inherit" variant="outlined" component={Link} to="/" sx={{ margin: '10px' }}>
+          Главная
         </Button>
-          <Button color="inherit" variant="outlined" component={Link} to="/" sx={{ margin: '10px' }}>
-            Главная
-          </Button>
+        <Button color="inherit" variant="outlined" component={Link} to="/about" sx={{ margin: '10px' }}>
+          О себе
+        </Button>
         <Button color="inherit" variant="outlined" component={Link} to="/counter" sx={{ margin: '10px' }}>
           Счетчик
         </Button>
@@ -59,7 +63,6 @@ const Header = () => {
     </AppBar>
   );
 };
-
 const App = () => {
   const [theme, setTheme] = useState('light');
 
@@ -91,7 +94,7 @@ const App = () => {
     <Router>
       <ThemeContext.Provider value={{ toggleTheme }}>
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          <Header/>
+          <Header />
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -99,8 +102,9 @@ const App = () => {
               <Route path="/lab2" element={<Lab2 />} />
               <Route path="/lab3" element={<Lab3 />} />
               <Route path="/lab4" element={<Lab4 />} />
-              <Route path="/reg" element={<Registration/>}/>
-              <Route path="/manage" element={<UserManage/>}/>
+              <Route path="/reg" element={<Registration />} />
+              <Route path="/about" element={<About/>} />
+              <Route path="/manage" element={<UserManage />} />
               <Route path="/counter" element={<CounterPage />} />
             </Routes>
           </Layout>
@@ -109,7 +113,6 @@ const App = () => {
     </Router>
   );
 };
-
 
 export default function WrappedApp() {
   return (
