@@ -15,6 +15,7 @@ import Registration from './Pages/Registration';
 import UserManage from './REST/UserManage';
 import MenuIcon from '@mui/icons-material/Menu'; 
 import About from './Pages/About';
+import TablePage from './Pages/TablePage';
 
 const ThemeContext = createContext();
 
@@ -39,14 +40,11 @@ const Header = () => {
         <Button color="inherit" variant="outlined" component={Link} to="/about" sx={{ margin: '10px' }}>
           О себе
         </Button>
-        <Button color="inherit" variant="outlined" component={Link} to="/counter" sx={{ margin: '10px' }}>
-          Счетчик
-        </Button>
         <Button color="inherit" variant="outlined" component={Link} to="/reg" sx={{ margin: '10px' }}>
           Регистрация
         </Button>
-        <Button color="inherit" variant="outlined" component={Link} to="/manage" sx={{ margin: '10px' }}>
-          Rest
+        <Button color="inherit" variant="outlined" component={Link} to="/table" sx={{ margin: '10px' }}>
+          Таблица
         </Button>
         <Button color="inherit" onClick={toggleTheme} variant="outlined" sx={{ margin: '10px' }}>
           Сменить тему
@@ -58,6 +56,8 @@ const Header = () => {
           <NavigationLink to="/lab2" primary="Лабораторная работа 2" />
           <NavigationLink to="/lab3" primary="Лабораторная работа 3" />
           <NavigationLink to="/lab4" primary="Лабораторная работа 4" />
+          <NavigationLink to="/manage" primary="REST" />
+          <NavigationLink to="/counter" primary="Счётчик" />
         </List>
       </Drawer>
     </AppBar>
@@ -103,6 +103,7 @@ const App = () => {
               <Route path="/lab3" element={<Lab3 />} />
               <Route path="/lab4" element={<Lab4 />} />
               <Route path="/reg" element={<Registration />} />
+              <Route path="/table" element={<TablePage />} />
               <Route path="/about" element={<About/>} />
               <Route path="/manage" element={<UserManage />} />
               <Route path="/counter" element={<CounterPage />} />
