@@ -16,6 +16,7 @@ import UserManage from './REST/UserManage';
 import MenuIcon from '@mui/icons-material/Menu'; 
 import About from './Pages/About';
 import TablePage from './Pages/TablePage';
+import Users from './rtk/Users';
 
 const ThemeContext = createContext();
 
@@ -45,6 +46,9 @@ const Header = () => {
         </Button>
         <Button color="inherit" variant="outlined" component={Link} to="/table" sx={{ margin: '10px' }}>
           Таблица
+        </Button>
+        <Button color="inherit" variant="outlined" component={Link} to="/rtk" sx={{ margin: '10px' }}>
+          RTK
         </Button>
         <Button color="inherit" onClick={toggleTheme} variant="outlined" sx={{ margin: '10px' }}>
           Сменить тему
@@ -107,6 +111,7 @@ const App = () => {
               <Route path="/about" element={<About/>} />
               <Route path="/manage" element={<UserManage />} />
               <Route path="/counter" element={<CounterPage />} />
+              <Route path="/rtk" element={<Users />} />
             </Routes>
           </Layout>
         </ThemeProvider>
